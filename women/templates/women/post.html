@@ -1,0 +1,17 @@
+{% extends 'women/base.html' %}
+
+{% block article %}
+
+
+{% if articles.photo%}
+    <img class="img-article-left" src="{{articles.photo.url}}" alt="Foto" width="600" height="600">
+{% endif %}
+<p>{{articles.content|linebreaks}}</p>
+
+    {%  if  articles.films.all %}
+    <h3><u>Participation in films</u></h3>
+        {% for movies in articles.films.all %}
+            <li>{{movies}}</li>
+        {% endfor%}
+    {%  endif %}
+{% endblock %}

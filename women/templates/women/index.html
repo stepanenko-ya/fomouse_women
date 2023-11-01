@@ -1,0 +1,25 @@
+{% extends 'women/base.html' %}
+
+{% block yana %}
+
+<ul class="list-articles">
+	{% for p in articles %}
+
+	{% if p.photo %}
+    <img class="img-article-left" src="{{p.photo.url}}" alt="Foto" >
+	{% endif %}
+	<li><h2>{{p.title}}</h2>
+		<div class="article-panel">
+			<p class="first">Category:      {{p.category}}</p>
+			<p class="last">Date:      {{p.time_update|timesince}}</p>
+			<br>
+		</div>
+		{% autoescape off %}
+				{{p.content|capfirst|linebreaksbr|truncatewords:20}}
+		{% endautoescape %}
+			<div class="clear"></div>
+			<p class="link-read-post"><a href="{{p.get_absolute_url}} ">Read post</a></p>
+			</li>
+	{% endfor %}
+</ul>
+{% endblock %}
